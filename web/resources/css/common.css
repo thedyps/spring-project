@@ -1,0 +1,8 @@
+@charset "UTF-8";
+#title {
+	font-family: 'Demonized';
+}
+.login-success {
+	display: inline-block;
+	font-size: 100%;
+}

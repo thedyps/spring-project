@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mem" >
+	<resultMap type="xyz.thedyps.main.mem.MemberVO" id="selectByEmail">
+		<constructor>
+		   <idArg column="id" javaType="_int"/>
+		   <arg column="email" javaType="String"/>
+		   <arg column="password" javaType="String"/>
+		   <arg column="name" javaType="String"/>
+		   <arg column="regdate" javaType="java.util.Date"/>
+		</constructor>
+	</resultMap>
+	
+ 	<select id="selByEmail" parameterType="String" resultMap="selectByEmail">
+	select * from MEMBER where EMAIL = #{email,javaType=String,jdbcType=VARCHAR}
+ 	</select>
+ 	
+ 	<insert id="insert" parameterType="xyz.thedyps.main.mem.MemberVO">
+ 		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+    	select seq_mem.nextval FROM DUAL
+  		</selectKey>
+ 	insert into MEMBER (ID, EMAIL, PASSWORD, NAME, REGDATE)
+ 	values (#{id,javaType=int,jdbcType=NUMERIC}, 
+ 	#{email,javaType=String,jdbcType=VARCHAR}, 
+ 	#{password,javaType=String,jdbcType=VARCHAR}, 
+ 	#{name,javaType=String,jdbcType=VARCHAR}, 
+ 	#{registerDate,javaType=java.util.Date,jdbcType=DATE})
+ 	</insert>
+ 	
+ 	<update id="update">
+ 	update MEMBER set NAME = 
+ 	#{name,javaType=String,jdbcType=VARCHAR}, 
+ 	PASSWORD = #{password,javaType=String,jdbcType=VARCHAR}
+ 	where 
+ 	EMAIL = #{email,javaType=String,jdbcType=VARCHAR}
+ 	</update>
+ 	
+ 	<resultMap type="xyz.thedyps.main.mem.MemberVO" id="selectAll"/>
+ 	<select id="selAll" resultMap="selectAll">
+ 	select * from MEMBER
+ 	</select>
+ 	
+ 	<select id="count" resultType="int">
+ 	select count(*) from MEMBER
+ 	</select>
+ 	 	
+</mapper>

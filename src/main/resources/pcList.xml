@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pcList" >
+ 	<select id="count" resultType="int">
+	SELECT 
+		count(*) 
+	FROM PC P 
+		JOIN CPU C ON P.cpu = C.code 
+		JOIN RAM R ON P.ram = R.code 
+		JOIN MAINBOARD M ON P.mainboard = M.code 
+		LEFT OUTER JOIN HDD H ON P.hdd = H.code 
+		LEFT OUTER JOIN SSD S ON P.ssd = S.code 
+		JOIN GRAPHIC G ON P.graphic = G.code 
+		JOIN OS O ON P.os = O.code 
+	WHERE P.type = #{pcType, javaType=String, jdbcType=VARCHAR}
+ 	</select>
+ 	
+ 	<select id="img" resultType="xyz.thedyps.main.goods.PcListImgVO">
+	SELECT 
+		*
+	FROM (
+		SELECT 
+			imgPath c, imgOrder v 
+		FROM PCIMAGE 
+		WHERE pcCode = #{pcCode}
+	) 
+	PIVOT (MIN(c) FOR v IN (2 brandImg, 3 mainImg))
+ 	</select>
+ 	 	
+ 	<select id="show" parameterType="map" resultMap="pcList">
+ 	SELECT * FROM (
+		SELECT ROWNUM rnum, result.* FROM (
+			SELECT P.code pc_code, P.brand pc_brand, P.type pc_type, 
+			P.price pc_price, P.DELIVERYPRICE pc_deliprice, P.grade pc_grade, 
+			C.name cpu_name, C.kind cpu_kind, C.speed cpu_speed, 
+			R.speed ram_speed, 
+			M.ramlimit mainboard_ramlimit, 
+			H.space hdd_space, H.speed hdd_speed,
+			S.space ssd_space, S.speed ssd_speed,
+			G.kind graphic_kind, O.name os_name
+			FROM PC P
+			JOIN CPU C ON P.cpu = C.code
+			JOIN RAM R ON P.ram = R.code
+			JOIN MAINBOARD M ON P.mainboard = M.code 
+			LEFT OUTER JOIN HDD H ON P.hdd = H.code
+			LEFT OUTER JOIN SSD S ON P.ssd = S.code
+			JOIN GRAPHIC G ON P.graphic = G.code
+			JOIN OS O ON P.os = O.code 
+			WHERE P.type = #{pcType, javaType=String, jdbcType=VARCHAR}
+		) result
+	) WHERE rnum BETWEEN #{start, javaType=int, jdbcType=NUMERIC} AND #{end, javaType=int, jdbcType=NUMERIC}
+ 	</select>
+ 	
+ 	<resultMap type="xyz.thedyps.main.goods.PcListVO" id="pcList">
+ 		<association property="pcListImgVO" javaType="xyz.thedyps.main.goods.PcListImgVO" column="{pcCode=pc_code}" select="img"/>
+ 	</resultMap>
+ 	 	
+ 	<select id="filterPcBrand" resultType="String">
+ 	SELECT DISTINCT brand FROM PC
+ 	</select>
+ 	
+ 	<select id="filterCpuKind" resultType="String">
+ 	SELECT DISTINCT kind FROM CPU
+ 	</select>
+ 	
+  	<select id="filterRamSpace" resultType="String">
+	SELECT DISTINCT ramLimit FROM MAINBOARD
+ 	</select>
+ 	
+   	<select id="filterGraKind" resultType="String">
+	SELECT DISTINCT kind FROM GRAPHIC
+ 	</select>
+ 	
+   	<select id="filterOsName" resultType="String">
+	SELECT DISTINCT name FROM OS
+ 	</select>
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC 
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="index" template="/WEB-INF/views/index.jsp">
+		<put-attribute name="top" value="/WEB-INF/views/sub/top.jsp" />
+		<put-attribute name="center" value="/WEB-INF/views/bbs/pcList.jsp" />
+		<put-attribute name="bottom" value="/WEB-INF/views/sub/bottom.jsp" />
+	</definition>
+	<definition name="pcDetail" template="/WEB-INF/views/pcDetail.jsp">
+		<put-attribute name="top" value="/WEB-INF/views/sub/top.jsp" />
+		<put-attribute name="center" value="/WEB-INF/views/bbs/pcDetail.jsp" />
+		<put-attribute name="bottom" value="/WEB-INF/views/sub/bottom.jsp" />
+	</definition>
+</tiles-definitions>
