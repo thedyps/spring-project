@@ -5,9 +5,6 @@
 	src: url('/resources/fonts/Demonized.eot');
 	src: url('/resources/fonts/Demonized.eot?#iefix') format('embedded-opentype'),
 		url('/resources/fonts/Demonized.woff2') format('woff2'),
-		url('/resources/fonts/Demonized.woff') format('woff'),
-		url('/resources/fonts/Demonized.ttf') format('truetype'),
-		url('/resources/fonts/Demonized.svg#Demonized') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -17,9 +14,6 @@
 	src: url('/resources/fonts/NanumGothic.eot');
 	src: url('/resources/fonts/NanumGothic.eot?#iefix') format('embedded-opentype'),
 		url('/resources/fonts/NanumGothic.woff2') format('woff2'),
-		url('/resources/fonts/NanumGothic.woff') format('woff'),
-		url('/resources/fonts/NanumGothic.ttf') format('truetype'),
-		url('/resources/fonts/NanumGothic.svg#NanumGothic') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
