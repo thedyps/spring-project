@@ -1,3 +1,5 @@
+<%@ page language="JAVA" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="container-fluid">
@@ -7,7 +9,7 @@
 				<div class="row">
 					<ul class="list-group col-lg-3 col-md-3 col-sm-3 col-xs-3">
 						<li data-target="#DetailImgSlide" data-slide-to="0" class="list-group-item active">
-							<img src='<c:url value="/resources/${pcImg.getThumbnailImg().get(0)}"/>' alt="">
+							<img src='<c:url value="/resources/${pcImgs.getThumbnailImg().get(0)}"/>' alt="">
 						</li>
 					<c:forEach begin="1" end="${pcImg.getThumbnailImg().size() - 1}" var="i">
 						<li data-target="#DetailImgSlide" data-slide-to="${i}" class="list-group-item">
@@ -33,6 +35,9 @@
 		</div>
 		<div class="col-lg-7 col-md-6 col-sm-6 col-xs-12">
 			<img src='<c:url value="/resources/${pcImg.getBrandImg()}"/>' alt="브랜드 이미지" class="brandImg">
+			<!-- item-title-text: pcSummary.BRAND+'而댄벂�꽣'+CPU NAME+
+		         + HDD or SSD SPACE + GRAPHIC TYPE + OS
+		    -->
 			<h2> 
 			<c:if test="${pcSummary.getSsdSpace() eq null}">
 				<c:out value="${pcSummary.getPcBrand()} 데스크탑 컴퓨터 ${pcSummary.getCpuKind()}

@@ -4,7 +4,7 @@
 	font-family: 'Demonized';
 	src: url('/resources/fonts/Demonized.eot');
 	src: url('/resources/fonts/Demonized.eot?#iefix') format('embedded-opentype'),
-		url('/resources/fonts/Demonized.woff2') format('woff2'),
+		url('/resources/fonts/Demonized.woff2') format('woff2');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -13,7 +13,7 @@
 	font-family: 'NanumGothic';
 	src: url('/resources/fonts/NanumGothic.eot');
 	src: url('/resources/fonts/NanumGothic.eot?#iefix') format('embedded-opentype'),
-		url('/resources/fonts/NanumGothic.woff2') format('woff2'),
+		url('/resources/fonts/NanumGothic.woff2') format('woff2');
 	font-weight: normal;
 	font-style: normal;
 }
