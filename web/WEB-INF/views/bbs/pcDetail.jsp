@@ -4,28 +4,30 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 			<div id="DetailImgSlide" class="carousel slide" data-ride="carousel" data-interval="false">
-				<div class="row">
-					<ul class="list-group col-lg-3 col-md-3 col-sm-3 col-xs-3">
-						<li data-target="#DetailImgSlide" data-slide-to="0" class="list-group-item active">
-							<img src='<c:url value="/resources/${pcImgs.getThumbnailImg().get(0)}"/>' alt="">
-						</li>
-					<c:forEach begin="1" end="${pcImg.getThumbnailImg().size() - 1}" var="i">
-						<li data-target="#DetailImgSlide" data-slide-to="${i}" class="list-group-item">
-							<img src='<c:url value="/resources/${pcImg.getThumbnailImg().get(i)}"/>' alt="">
-						</li>						
-					</c:forEach>
-					</ul>				
-					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+				<div class="row vertical-align">
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-5">
+						<ul class="list-group">
+							<li data-target="#DetailImgSlide" data-slide-to="0" class="list-group-item active">
+								<img src='<c:url value="/resources/${pcImg.getThumbnailImg().get(0)}"/>' alt="" class="center-block">
+							</li>
+							<c:forEach begin="1" end="${pcImg.getThumbnailImg().size() - 1}" var="i">
+								<li data-target="#DetailImgSlide" data-slide-to="${i}" class="list-group-item">
+									<img src='<c:url value="/resources/${pcImg.getThumbnailImg().get(i)}"/>' alt="" class="center-block">
+								</li>
+							</c:forEach>
+						</ul>
+					</div>
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-7">
 						<!-- Wrapper for slides -->
 						<div class="carousel-inner">
 							<div class="item active">
-								<img src='<c:url value="/resources/${pcImg.getPcImg().get(0)}"/>' alt="상세 이미지">
+								<img src='<c:url value="/resources/${pcImg.getPcImg().get(0)}"/>' alt="상세 이미지" class="img-responsive">
 							</div>
 							<c:forEach begin="1" end="${pcImg.getPcImg().size() - 1}" var="i">
 							<div class="item">
-								<img src='<c:url value="/resources/${pcImg.getPcImg().get(i)}"/>' alt="상세 이미지">
+								<img src='<c:url value="/resources/${pcImg.getPcImg().get(i)}"/>' alt="상세 이미지" class="img-responsive">
 							</div>
 							</c:forEach>
 						</div>
@@ -33,12 +35,12 @@
 				</div>
 			</div>	
 		</div>
-		<div class="col-lg-7 col-md-6 col-sm-6 col-xs-12">
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			<img src='<c:url value="/resources/${pcImg.getBrandImg()}"/>' alt="브랜드 이미지" class="brandImg">
 			<!-- item-title-text: pcSummary.BRAND+'而댄벂�꽣'+CPU NAME+
 		         + HDD or SSD SPACE + GRAPHIC TYPE + OS
 		    -->
-			<h2> 
+			<h2>
 			<c:if test="${pcSummary.getSsdSpace() eq null}">
 				<c:out value="${pcSummary.getPcBrand()} 데스크탑 컴퓨터 ${pcSummary.getCpuKind()}
 				(${pcSummary.getCpuSpeed()}) ${pcSummary.getHddSpace()} HDD ${pcSummary.getGraphicKind()} ${pcSummary.getOsName() }" />
@@ -112,27 +114,21 @@
 					${pcSummary.getDeliveryDate() }
 				</li>
 			</ul>
-			<div>
-				<form>
-					<div class="form-horizontal">
-						<div class="form-group">
-							<div class="input-group col-lg-10">
-						      <input type="text" class="form-control" value=1>
-						      <div class="input-group-addon">개</div>
-						    </div>
-						    <div class="btn-group col-lg-2" role="group" >
-							    <button type="button" class="btn btn-primary">
-									<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-primary">
-									<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-								</button>
-						    </div>
-						</div>
-					</div>
-					<button type="submit" class="btn btn-primary btn-lg">장바구니로 옮기기</button>
-				</form>
-			</div>
+			<form class="form">
+				<div class="input-group">
+				  <input type="text" class="form-control" value=1>
+				  <div class="input-group-addon">개</div>
+				</div>
+				<div class="btn-group btn-group-justifie" role="group">
+					<button type="button" class="btn">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
+					<button type="button" class="btn">
+						<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+					</button>
+				</div>
+				<button type="submit" class="btn btn-primary btn-lg">장바구니로 옮기기</button>
+			</form>
 		</div>
 	</div>
 	<div class="container">

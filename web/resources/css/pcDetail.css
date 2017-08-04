@@ -5,8 +5,41 @@
     -moz-transition: 0.6s ease-in-out left;
     -o-transition: 0.6s ease-in-out left;
     transition: 0.6s ease-in-out left;
+
+    vertical-align: middle;
 }
 
 .brandImg {
 	display: block;
+}
+
+.list-group-item {
+    margin: 0 auto;
+}
+
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    display: block;
+    height: auto;
+}
+
+.row {
+    border: 1px solid black;
+    height: 100%;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+.list-group-item {
+    padding: auto 0 auto 0;
+}
+
+.btn-group  {
+    border: 1px solid red;
 }
