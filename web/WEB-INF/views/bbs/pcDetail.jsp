@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="container-fluid">
@@ -35,9 +33,6 @@
 		</div>
 		<div class="col-lg-7 col-md-6 col-sm-6 col-xs-12">
 			<img src='<c:url value="/resources/${pcImg.getBrandImg()}"/>' alt="브랜드 이미지" class="brandImg">
-			<!-- item-title-text: pcSummary.BRAND+'而댄벂�꽣'+CPU NAME+
-		         + HDD or SSD SPACE + GRAPHIC TYPE + OS
-		    -->
 			<h2> 
 			<c:if test="${pcSummary.getSsdSpace() eq null}">
 				<c:out value="${pcSummary.getPcBrand()} 데스크탑 컴퓨터 ${pcSummary.getCpuKind()}
