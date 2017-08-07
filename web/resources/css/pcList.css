@@ -51,12 +51,3 @@
 .carousel-control.right {
   background-image: none;
 }
-/* ------------------- Section Styling - Not needed for carousel styling ------------------- */
-.section-white {
-   padding: 10px 0;
-}
-
-.section-white {
-  background-color: #fff;
-  color: #555;
-}

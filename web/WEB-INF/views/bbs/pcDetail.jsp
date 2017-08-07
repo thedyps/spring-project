@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 			<div id="DetailImgSlide" class="carousel slide" data-ride="carousel" data-interval="false">
 				<div class="row vertical-align">
 					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-5">
@@ -35,11 +35,9 @@
 				</div>
 			</div>	
 		</div>
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+		<div class="col-lg-6 col-md-5 col-sm-6 col-xs-12">
 			<img src='<c:url value="/resources/${pcImg.getBrandImg()}"/>' alt="브랜드 이미지" class="brandImg">
-			<!-- item-title-text: pcSummary.BRAND+'而댄벂�꽣'+CPU NAME+
-		         + HDD or SSD SPACE + GRAPHIC TYPE + OS
-		    -->
+
 			<h2>
 			<c:if test="${pcSummary.getSsdSpace() eq null}">
 				<c:out value="${pcSummary.getPcBrand()} 데스크탑 컴퓨터 ${pcSummary.getCpuKind()}
@@ -103,31 +101,49 @@
 				</li>
 			</ul>
 		</div>
-		<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-			<ul class="list-unstyled">
-				<li>
-					<strong>가격</strong>
-					<fmt:formatNumber value="${pcSummary.getPcPrice()}" />원
-				</li>
-				<li>
-					<strong>예상 배송일: </strong>  
-					${pcSummary.getDeliveryDate() }
-				</li>
-			</ul>
-			<form class="form">
-				<div class="input-group">
-				  <input type="text" class="form-control" value=1>
-				  <div class="input-group-addon">개</div>
+		<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+					<p class="h4 text-muted"> 가격: </p>
+					<p class="h4 text-primary">
+						<fmt:formatNumber value="${pcSummary.getPcPrice()}" />원
+					</p>
 				</div>
-				<div class="btn-group btn-group-justifie" role="group">
-					<button type="button" class="btn">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
-					<button type="button" class="btn">
-						<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-					</button>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+					<p class="h4 text-muted">예상 배송일: </p>
+					<p class="h4 text-primary">
+						${pcSummary.getDeliveryDate() }
+					</p>
 				</div>
-				<button type="submit" class="btn btn-primary btn-lg">장바구니로 옮기기</button>
+			</div>
+			<form class="form-horizontal">
+				<div class="form-group">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+									<span class="glyphicon glyphicon-minus"></span>
+								</button>
+							</span>
+							<input type="text" name="quant[1]" class="form-control input-number" value="1" min="1">
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
+									<span class="glyphicon glyphicon-plus"></span>
+								</button>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<button type="submit" class="btn btn-success btn-block">장바구니에 담기</button>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<button type="submit" class="btn btn-danger btn-lg btn-block">주문하기</button>
+					</div>
+				</div>
 			</form>
 		</div>
 	</div>
@@ -150,7 +166,7 @@
 		    </div>
 		</div>
 		 -->
-		<div>
+		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -174,6 +190,8 @@
 					</tr>
 				</tbody>
 			</table>
+		</div>
+		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -243,6 +261,8 @@
 					</tr>
 				</tbody>
 			</table>
+		</div>
+		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -272,6 +292,8 @@
 					</tr>
 				</tbody>
 			</table>
+		</div>
+		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -297,6 +319,8 @@
 					</tr>
 				</tbody>
 			</table>
+		</div>
+		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -318,7 +342,8 @@
 					</tr>
 				</tbody>
 			</table>
-
+		</div>
+		<div class="table-responsive">
 			<c:if test="${pcDetail.getSsdSpace() eq null}">
 			<table class="table table-striped">
 				<thead>
@@ -346,7 +371,8 @@
 				</tbody>
 			</table>
 			</c:if>
-
+		</div>
+		<div class="table-responsive">
 			<c:if test="${pcDetail.getHddSpace() eq null}">
 			<table class="table table-striped">
 				<thead>
@@ -374,7 +400,8 @@
 				</tbody>
 			</table>
 			</c:if>
-
+		</div>
+		<div class="table-responsive">
 			<c:if test="${!pcDetail.getHddSpace() eq null && !pcDetail.getSsdSpace() eq null}">
 			<table class="table table-striped">
 				<thead>
@@ -401,6 +428,8 @@
 					</tr>
 				</tbody>
 			</table>
+		</div>
+		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -427,6 +456,8 @@
 				</tbody>
 			</table>
 			</c:if>
+		</div>
+		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -452,6 +483,8 @@
 					</tr>
 				</tbody>
 			</table>
+		</div>
+		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
 					<tr>

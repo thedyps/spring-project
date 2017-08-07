@@ -1,11 +1,30 @@
 @charset "UTF-8";
+[class*="col-md-"].top-14 ,
+[class*="col-lg-"].top-14
+{
+
+}
+@media (max-width : 1200px) {
+    [class*="col-sm-"].top-14 ,
+    [class*="col-xs-"].top-14
+    {
+        margin-top: 14px;
+    }
+}
+
+@media  (max-width : 992px) {
+    [class*="col-sm-"].top-14 ,
+    [class*="col-xs-"].top-14
+    {
+        margin-top: 14px;
+    }
+}
 
 .carousel-inner > .item {
     -webkit-transition: 0.6s ease-in-out left;
     -moz-transition: 0.6s ease-in-out left;
     -o-transition: 0.6s ease-in-out left;
     transition: 0.6s ease-in-out left;
-
     vertical-align: middle;
 }
 
@@ -27,7 +46,6 @@
 }
 
 .row {
-    border: 1px solid black;
     height: 100%;
 }
 
@@ -38,8 +56,4 @@
 
 .list-group-item {
     padding: auto 0 auto 0;
-}
-
-.btn-group  {
-    border: 1px solid red;
 }
