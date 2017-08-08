@@ -68,4 +68,8 @@ $(function () {
         menu.slideDown(400);
         $(this).addClass("open");
     }*/
+
+    $('[data-toggle="offcanvas"]').click(function () {
+        $('.row-offcanvas').toggleClass('active')
+    });
 });

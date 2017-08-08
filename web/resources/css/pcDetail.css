@@ -32,10 +32,6 @@
 	display: block;
 }
 
-.list-group-item {
-    margin: 0 auto;
-}
-
 .img-responsive,
 .thumbnail > img,
 .thumbnail a > img,
@@ -55,5 +51,6 @@
 }
 
 .list-group-item {
+    margin: 0 auto;
     padding: auto 0 auto 0;
 }
